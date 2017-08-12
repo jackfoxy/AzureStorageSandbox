@@ -1,0 +1,24 @@
+framework: auto-detect
+source https://nuget.org/api/v2
+
+nuget FSharp.Azure.StorageTypeProvider
+nuget FSharp.Configuration
+nuget FSharp.Core
+nuget Microsoft.Azure.WebJobs
+nuget Microsoft.Azure.WebJobs.Extensions
+
+group Build
+  source https://nuget.org/api/v2
+  
+  nuget FAKE
+  nuget FSharp.Formatting
+
+  github fsharp/FAKE modules/Octokit/Octokit.fsx
+
+group Test
+	source https://nuget.org/api/v2
+  
+	nuget Expecto
+	nuget Expecto.BenchmarkDotNet
+	nuget Expecto.FsCheck
+	nuget Expecto.VisualStudio.TestAdapter version_in_path: true

@@ -1,0 +1,8 @@
+﻿{
+  "name": "rawConnections",
+  "type": "blob",
+  "direction": "in",
+  "path": "contactinput/{folder}/{filename}.{extension}",
+  "connection": "tibrutest12"
+},
+
