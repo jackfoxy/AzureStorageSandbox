@@ -55,11 +55,13 @@ let Run(queueItem: CloudQueueMessage, log: TraceWriter) =
         |> Async.AwaitTask
         |> Async.RunSynchronously
 
+    queueItem
     if tableResult.HttpStatusCode = (int HttpStatusCode.Created) then 
         log.Info(sprintf "message: %s  processed at %s!" queueItem.AsString now, "CloudQueueMessage")
     else    
         if queueItem.DequeueCount < 5 then
             log.Info(sprintf "message: %s  failed at %s, dequeu count is %i!" queueItem.AsString now queueItem.DequeueCount, "CloudQueueMessage")
+            //queueItem.NextVisibleTime <- DateTimeOffset(now)
         else
             log.Info(sprintf "message: %s  failed at %s, dequeu count is %i!" queueItem.AsString now queueItem.DequeueCount, "CloudQueueMessage")
    // ()
